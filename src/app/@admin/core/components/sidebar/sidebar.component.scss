@@ -1,0 +1,22 @@
+/*los estilos del admin */ 
+@import "./../../../pages/admin.component.scss";
+
+#sidebar-wrapper{
+    background-color: $admin-primary-color;
+}
+
+#sidebar-wrapper .list-group {
+    width: 16.6rem;
+}
+
+img{
+    max-width: 225px;
+    vertical-align: middle;
+    border-style: none;
+    height: auto;
+}
+.bg-sidebar-menu-item{
+    background-color: #e6f2ff;
+    color:#262626;
+    text-align: justify;
+}

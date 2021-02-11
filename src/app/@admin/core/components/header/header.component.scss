@@ -1,0 +1,17 @@
+/*los estilos del admin */
+@import "./../../../pages/admin.component.scss";
+
+#menu-toggle {
+  color: #181f2c;
+  background-color: transparent;
+  border-color: transparent;
+  border-radius: 70%;
+  margin-top: -1rem;
+font-size: large;
+}
+
+.shadow {
+  -webkit-box-shadow: 3px 6px 22px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 6px 22px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 6px 22px -1px rgba(0, 0, 0, 0.5);
+}
