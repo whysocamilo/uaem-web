@@ -1,0 +1,20 @@
+<!-- Sidebar -->
+<div class="border-right" id="sidebar-wrapper">
+  <div class="sidebar-heading">
+    <a [routerLink]="['/inicio']" routerLinkActive="router-link-active">
+      <img
+        src="assets/img/Logo_Tienda_Uaem.svg"
+        alt="uaem"
+      />
+    </a>
+  </div>
+
+  <div class="list-group list-group-flush">
+    <a [routerLink]="['/admin']" routerLinkActive="router-link-active"  class="list-group-item list-group-item-action bg-sidebar-menu-item"
+      ><i class="fas fa-home"></i> Panel Principal</a
+    >
+    <a [routerLink]="['/admin/usuarios']" routerLinkActive="router-link-active"  class="list-group-item list-group-item-action bg-sidebar-menu-item"
+      ><i class="fas fa-id-badge"></i> Usuarios</a
+    >
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<!--Se realizo un import de una plantilla de bootstrap para el menu administrador-->
+
+<div class="d-flex" id="wrapper">
+  <!--barra de navegacion con el import que se hizo del sidebar.componet-->
+  <app-admin-sidebar *ngIf="toggledValue"></app-admin-sidebar>
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <!--Contenido del titulo-->
+    <app-admin-header (toggleChange)="toggled($event)"></app-admin-header>
+    <!---->
+    <div class="container-fluid">
+      <app-admin-titulo></app-admin-titulo>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+</div>
