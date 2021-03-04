@@ -4,15 +4,15 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
 
   {
-    //configuramos la ruta vacia para redireccione a una pagina en concreto
+    // configuramos la ruta vacia para redireccione a una pagina en concreto
     path: '',
-    redirectTo: 'inicio',
+    redirectTo: '',
     pathMatch: 'full',
   },
   {
-    //configuramos la ruta que no existe para redireccione a una pagina en concreto
+    // configuramos la ruta que no existe para redireccione a una pagina en concreto
     path: '**',
-    redirectTo: 'inicio',
+    redirectTo: '',
     pathMatch: 'full',
   },
 ];
@@ -20,7 +20,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      useHash: true,
+      useHash: false,
       scrollPositionRestoration: 'enabled',
     }),
   ],

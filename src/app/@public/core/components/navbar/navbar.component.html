@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-md custom-bg navbar-dark">
+  <a
+    class="navbar-brand"
+    [routerLink]="['/']"
+    routerLinkActive="router-link-active"
+  >
+    <img src="assets/img/Logo_Tienda_Uaem.svg" alt="uaem"
+  /></a>
+
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#collapsibleNavbar"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [routerLink]="['/']"
+          routerLinkActive="router-link-active"
+          >Inicio</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [routerLink]="['/admin']"
+          routerLinkActive="router-link-active"
+          >Admin</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [routerLink]="['/contacto']"
+          routerLinkActive="router-link-active"
+          >Contacto</a
+        >
+      </li>
+    </ul>
+  </div>
+</nav>
