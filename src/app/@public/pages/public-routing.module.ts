@@ -21,6 +21,20 @@ const routes: Routes = [
             (m) => m.ContactoModule
           ),
       },
+      {
+        path: 'login',
+        loadChildren: () =>
+          import('./forms/login/login.module').then(
+            (m) => m.LoginModule
+          ),
+      },
+      {
+        path: 'register',
+        loadChildren: () =>
+          import('./forms/register/register.module').then(
+            (m) => m.RegisterModule
+          ),
+      },
     ]
   }
 ];

@@ -1,9 +1,66 @@
-.custom-bg {
-  background-color: #004b87;
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.navbar .navbar-brand {
+  font-size: 25px;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  color: #222;
+  margin-left: 70px;
+  font-family: 'Pacifico', cursive;
 }
-img {
-  max-width: 170px;
-  vertical-align: middle;
-  border-style: none;
-  height: auto;
+.ml-auto, .mx-auto {
+  margin-left: auto!important;
+  margin-right: 32px;
+}
+.navbar {
+  padding: 12px 0;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.05);
+}
+.custom-bg {
+  background-color: #ffffff;
+}
+.navbar a {
+  display: block;
+  position: relative;
+  color: #0f394c;
+  font-size: 15px;
+  font-weight: 400;
+  padding: 1.2rem;
+  display: flex;
+}
+
+.dropdown-item {
+  cursor: pointer;
+  color: #556270;
+}
+// toggle nav
+.navbar-toggler {
+  background: #dddddd;
+  border: none;
+  padding: 10px 6px;
+  margin-right: 10px;
+}
+.navbar-toggler span {
+  display: block;
+  width: 22px;
+  height: 21px;
+  border: 1px;
+}
+.navbar-toggler span + span {
+  margin-top: 4px;
+  width: 18px;
+  margin-left: 4px;
+}
+.navbar-toggler span + span + span {
+  width: 10px;
+  margin-left: 10px;
+}
+
+// navbar links
+.navbar-expand-lg .navbar-nav .nav-link {
+  position: relative;
+}
+.navbar-expand-lg .navbar-nav .nav-link:hover {
+  border-bottom: 2px solid #3c84e2;
 }
