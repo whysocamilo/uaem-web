@@ -24,9 +24,9 @@ export class DatePickerLegalAgeComponent implements OnInit {
     day: this.CURRENTDAY.day
   };
   maxDate: NgbDateStruct = {
-    year: this.CURRENTDAY.year - 5,
-    month: this.CURRENTDAY.month + 7,
-    day: this.CURRENTDAY.day + 24
+    year: this.CURRENTDAY.year - 15,
+    month: this.CURRENTDAY.month,
+    day: this.CURRENTDAY.day
   };
   model: NgbDateStruct = this.maxDate;
 

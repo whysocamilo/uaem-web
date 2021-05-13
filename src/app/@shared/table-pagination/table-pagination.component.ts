@@ -1,16 +1,15 @@
 import { ITableColumns } from '@core/interfaces/table-columns.interface';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { DocumentNode } from 'graphql';
 import { TablePaginationService } from './table-pagination.service';
 import { IResultData, IInfoPage } from '@core/interfaces/result-data.interface';
 import { map } from 'rxjs/internal/operators/map';
 import { Observable } from 'rxjs/internal/Observable';
 
-
 @Component({
   selector: 'app-table-pagination',
   templateUrl: './table-pagination.component.html',
-  styleUrls: ['./table-pagination.component.scss']
+  styleUrls: ['./table-pagination.component.scss'],
 })
 export class TablePaginationComponent implements OnInit {
   @Input() query: DocumentNode;
@@ -19,9 +18,10 @@ export class TablePaginationComponent implements OnInit {
   @Input() include = true;
   @Input() resultData: IResultData;
   @Input() tableColumns: Array<ITableColumns> = undefined;
+  @Output() manageItem = new EventEmitter<Array<any>>();
   infoPage: IInfoPage;
   data$: Observable<any>;
-  constructor(private service: TablePaginationService) { }
+  constructor(private service: TablePaginationService) {}
 
   ngOnInit(): void {
     if (this.query === undefined) {
@@ -37,7 +37,7 @@ export class TablePaginationComponent implements OnInit {
       page: 1,
       pages: 1,
       itemsPage: this.itemsPage,
-      total: 1
+      total: 1,
     };
     this.loadData();
   }
@@ -46,21 +46,24 @@ export class TablePaginationComponent implements OnInit {
     const variables = {
       page: this.infoPage.page,
       itemsPage: this.infoPage.itemsPage,
-      include: this.include
+      include: this.include,
     };
-    this.data$ = this.service.getCollectionData(this.query, variables , {}).pipe(
+    this.data$ = this.service.getCollectionData(this.query, variables, {}).pipe(
       map((result: any) => {
         const data = result[this.resultData.definitionKey];
         this.infoPage.pages = data.info.pages;
         this.infoPage.total = data.info.total;
         return data[this.resultData.listKey];
-      }
-    ));
+      })
+    );
   }
 
   changePage() {
     console.log(this.infoPage.page);
     this.loadData();
   }
-
+  manageAction(action: string, data: any) {
+    console.log(action, data);
+    this.manageItem.emit([action, data]);
+  }
 }

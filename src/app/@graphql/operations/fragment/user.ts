@@ -5,7 +5,6 @@ export const USER_FRAGMENT = gql`
         id
         name
         lastname
-        password @include(if: $include)
         email
         registerdate @include(if: $include)
         birthday @include(if: $include)

@@ -1,32 +1,33 @@
-import { GENRE_LIST_QUERY } from '@graphql/operations/query/genre';
 import { Component, OnInit } from '@angular/core';
-import { DocumentNode } from 'graphql';
 import { IResultData } from '@core/interfaces/result-data.interface';
 import { ITableColumns } from '@core/interfaces/table-columns.interface';
-import { GenresService } from './genres.service';
+import { TAG_LIST_QUERY } from '@graphql/operations/query/tag';
 import { formBasicDialog, optionsWithDetails } from '@shared/alerts/alerts';
-import { TYPE_ALERT } from '@shared/alerts/values.config';
 import { basicAlert } from '@shared/alerts/toasts';
+import { TYPE_ALERT } from '@shared/alerts/values.config';
+import { DocumentNode } from 'graphql';
+import { TagsService } from './tags.service';
 
 @Component({
-  selector: 'app-genres',
-  templateUrl: './genres.component.html',
-  styleUrls: ['./genres.component.scss'],
+  selector: 'app-tags',
+  templateUrl: './tags.component.html',
+  styleUrls: ['./tags.component.scss']
 })
-export class GenresComponent implements OnInit {
-  query: DocumentNode = GENRE_LIST_QUERY;
+export class TagsComponent implements OnInit {
+
+  query: DocumentNode = TAG_LIST_QUERY;
   context: object;
   itemsPage: number;
   resultData: IResultData;
   include: boolean;
   columns: Array<ITableColumns>;
-  constructor(private service: GenresService) {}
+  constructor(private service: TagsService) {}
   ngOnInit(): void {
     this.context = {};
     this.itemsPage = 10;
     this.resultData = {
-      listKey: 'genres',
-      definitionKey: 'genres',
+      listKey: 'tags',
+      definitionKey: 'tags',
     };
     this.include = false;
     this.columns = [
@@ -36,22 +37,21 @@ export class GenresComponent implements OnInit {
       },
       {
         property: 'name',
-        label: 'Genero',
+        label: 'Tag',
       },
       {
         property: 'slug',
-        label: 'Identificador',
+        label: 'Slug',
       },
     ];
   }
-
   async takeAction($event) {
-    // la información para las acciones
+    // Coger la información para las acciones
     const action = $event[0];
-    const genre = $event[1];
-    // el valor por defecto
+    const tag = $event[1];
+    // Cogemos el valor por defecto
     const defaultValue =
-      genre.name !== undefined && genre.name !== '' ? genre.name : '';
+      tag.name !== undefined && tag.name !== '' ? tag.name : '';
     const html = `<input id="name" value="${defaultValue}" class="swal2-input" required>`;
     // Teniendo en cuenta el caso, ejecutar una acción
     switch (action) {
@@ -60,38 +60,37 @@ export class GenresComponent implements OnInit {
         this.addForm(html);
         break;
       case 'edit':
-        this.updateForm(html, genre);
+        this.updateForm(html, tag);
         break;
       case 'info':
         const result = await optionsWithDetails(
           'Detalles',
-          `${genre.name} (${genre.slug})`,
+          `${tag.name} (${tag.slug})`,
           375,
           '<i class="fas fa-edit"></i> Editar', // true
           '<i class="fas fa-lock"></i> Bloquear'
         ); // false
         if (result) {
-          this.updateForm(html, genre);
+          this.updateForm(html, tag);
         } else if (result === false) {
-          this.blockForm(genre);
+          this.blockForm(tag);
         }
         break;
       case 'block':
-        this.blockForm(genre);
+        this.blockForm(tag);
         break;
       default:
         break;
     }
   }
   private async addForm(html: string) {
-    const result = await formBasicDialog('Añadir género', html, 'name');
+    const result = await formBasicDialog('Añadir tag', html, 'name');
     console.log(result);
-    this.addGenre(result);
+    this.addtag(result);
   }
-  private addGenre(result) {
+  private addtag(result) {
     if (result.value) {
       this.service.add(result.value).subscribe((res: any) => {
-        console.log(res);
         if (res.status) {
           basicAlert(TYPE_ALERT.SUCCESS, res.message);
           return;
@@ -101,13 +100,12 @@ export class GenresComponent implements OnInit {
     }
   }
 
-  private async updateForm(html: string, genre: any) {
-    const result = await formBasicDialog('Modificar género', html, 'name');
-    console.log(result);
-    this.updateGenre(genre.id, result);
+  private async updateForm(html: string, tag: any) {
+    const result = await formBasicDialog('Modificar tag', html, 'name');
+    this.updateTag(tag.id, result);
   }
 
-  private updateGenre(id: string, result) {
+  private updateTag(id: string, result) {
     console.log(id, result.value);
     if (result.value) {
       this.service.update(id, result.value).subscribe((res: any) => {
@@ -121,7 +119,7 @@ export class GenresComponent implements OnInit {
     }
   }
 
-  private blockGenre(id: string) {
+  private blockTag(id: string) {
     this.service.block(id).subscribe((res: any) => {
       console.log(res);
       if (res.status) {
@@ -132,17 +130,18 @@ export class GenresComponent implements OnInit {
     });
   }
 
-  private async blockForm(genre: any) {
+  private async blockForm(tag: any) {
     const result = await optionsWithDetails(
       'Bloquear',
-      `¿Estas seguro?`,
+      `¿Estas Seguro?`,
       430,
       'No',
       'Si'
     );
     if (result === false) {
       // Si resultado falso, queremos bloquear
-      this.blockGenre(genre.id);
+      this.blockTag(tag.id);
     }
   }
+
 }
