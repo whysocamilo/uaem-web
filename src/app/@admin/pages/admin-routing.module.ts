@@ -19,6 +19,10 @@ const routes: Routes = [
         loadChildren: () =>
           import('./usuarios/usuarios.module').then((m) => m.UsuariosModule),
       },
+      {
+        path: 'genres',
+        loadChildren: () => import('./genres/genres.module').then(m => m.GenresModule)
+      }
     ],
   },
 ];

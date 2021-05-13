@@ -11,10 +11,10 @@ export class InicioComponent implements OnInit {
   constructor(private usersApi: UsersService, private auth: AuthService) { }
 
   ngOnInit(): void {
-  /*this.usersApi.getUsers().subscribe( result => {
+  this.usersApi.getUsers(2, 1).subscribe( result => {
       console.log(result); // { { status message users: []}
     });
-    this.auth.getMe().subscribe( result => {
+    /*this.auth.getMe().subscribe( result => {
       console.log(result); // { status message user: {}}
     });*/
   }
