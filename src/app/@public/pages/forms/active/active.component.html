@@ -1,0 +1,62 @@
+<body class="my-login-page">
+  <section class="h-100">
+    <div class="container h-100">
+      <div class="row justify-content-md-center h-100">
+        <div class="card-wrapper">
+          <div class="brand"></div>
+          <div class="card fat">
+            <div class="card-body">
+              <h4 class="card-title">Activar cuenta</h4>
+
+              <form (ngSubmit)="add()" #forma="ngForm">
+                <div class="form-group">
+                  <label for="password">Contraseña</label>
+                  <input
+                    type="password"
+                    placeholder="Introduzca la contraseña"
+                    #password="ngModel"
+                    [(ngModel)]="values.password"
+                    name="password"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="passwordTwo">Repetir contraseña</label>
+                  <input
+                    type="password"
+                    placeholder="Repita la contraseña"
+                    #passwordTwo="ngModel"
+                    [(ngModel)]="values.passwordTwo"
+                    name="passwordTwo"
+                    class="form-control"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="date">Fecha de Nacimiento</label>
+                  <app-date-picker-legal-age
+                    class="form-control"
+                    (newDate)="dataAsign($event)"
+                  ></app-date-picker-legal-age>
+                </div>
+
+                <div class="form-group m-0">
+                  <button
+                    [disabled]="forma.invalid"
+                    type="submit"
+                    class="btn btn-primary btn-block"
+                  >
+                    Activar Usuario
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="footer"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>

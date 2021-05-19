@@ -18,7 +18,6 @@ export class LoginComponent{
   constructor(private auth: AuthService, private router: Router) {}
   // guardar el inicio de sesion del usuario
   init() {
-    console.log(this.login);
     this.auth
       .login(this.login.email, this.login.password)
       .subscribe((result: IResultLogin) => {
