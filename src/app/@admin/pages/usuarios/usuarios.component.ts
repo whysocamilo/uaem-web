@@ -12,10 +12,9 @@ import { basicAlert } from '@shared/alerts/toasts';
 @Component({
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
-  styleUrls: ['./usuarios.component.scss']
+  styleUrls: ['./usuarios.component.scss'],
 })
 export class UsuariosComponent implements OnInit {
-
   query: DocumentNode = USERS_LIST_QUERY;
   context: object;
   itemsPage: number;
@@ -28,30 +27,30 @@ export class UsuariosComponent implements OnInit {
     this.itemsPage = 10;
     this.resultData = {
       listKey: 'users',
-      definitionKey: 'users'
+      definitionKey: 'users',
     };
     this.include = true;
     this.columns = [
       {
         property: 'id',
-        label: '#'
+        label: '#',
       },
       {
         property: 'name',
-        label: 'Nombre'
+        label: 'Nombre',
       },
       {
         property: 'lastname',
-        label: 'Apellido'
+        label: 'Apellido',
       },
       {
         property: 'email',
-        label: 'Correo electronico'
+        label: 'Correo electronico',
       },
       {
         property: 'role',
-        label: 'Permiso'
-      }
+        label: 'Permiso',
+      },
     ];
   }
 
@@ -63,8 +62,10 @@ export class UsuariosComponent implements OnInit {
     const defaultEmail =
       user.email !== undefined && user.email !== '' ? user.email : '';
     const roles = new Array(2);
-    roles[0] = user.role !== undefined && user.role === 'ADMIN' ? 'selected' : '';
-    roles[1] = user.role !== undefined && user.role === 'CLIENT' ? 'selected' : '';
+    roles[0] =
+      user.role !== undefined && user.role === 'ADMIN' ? 'selected' : '';
+    roles[1] =
+      user.role !== undefined && user.role === 'CLIENT' ? 'selected' : '';
     return `
       <input id="name" value="${defaultName}" class="swal2-input" placeholder="Nombre" required>
       <input id="lastname" value="${defaultLastname}" class="swal2-input" placeholder="Apellidos" required>
@@ -114,7 +115,7 @@ export class UsuariosComponent implements OnInit {
 
   private async addForm(html: string) {
     const result = await userFormBasicDialog('Añadir usuario', html);
-    console.log(result);
+
     this.addUser(result);
   }
 
@@ -124,7 +125,6 @@ export class UsuariosComponent implements OnInit {
       user.password = '1234';
       user.active = false;
       this.service.register(user).subscribe((res: any) => {
-        console.log(res);
         if (res.status) {
           basicAlert(TYPE_ALERT.SUCCESS, res.message);
           return;
@@ -136,7 +136,7 @@ export class UsuariosComponent implements OnInit {
 
   private async updateForm(html: string, user: any) {
     const result = await userFormBasicDialog('Modificar usuario', html);
-    console.log(result);
+
     this.updateUser(result, user.id);
   }
 
@@ -144,9 +144,8 @@ export class UsuariosComponent implements OnInit {
     if (result.value) {
       const user = result.value;
       user.id = id;
-      console.log(user);
+
       this.service.update(result.value).subscribe((res: any) => {
-        console.log(res);
         if (res.status) {
           basicAlert(TYPE_ALERT.SUCCESS, res.message);
           return;
@@ -172,7 +171,6 @@ export class UsuariosComponent implements OnInit {
 
   private blockUser(id: string) {
     this.service.block(id).subscribe((res: any) => {
-      console.log(res);
       if (res.status) {
         basicAlert(TYPE_ALERT.SUCCESS, res.message);
         return;
@@ -180,5 +178,4 @@ export class UsuariosComponent implements OnInit {
       basicAlert(TYPE_ALERT.WARNING, res.message);
     });
   }
-
 }

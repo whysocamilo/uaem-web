@@ -12,7 +12,7 @@ export class InicioComponent implements OnInit {
 
   ngOnInit(): void {
   this.usersApi.getUsers(2, 1).subscribe( result => {
-      console.log(result); // { { status message users: []}
+      // { { status message users: []}
     });
     /*this.auth.getMe().subscribe( result => {
       console.log(result); // { status message user: {}}

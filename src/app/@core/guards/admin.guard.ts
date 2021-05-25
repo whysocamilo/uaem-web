@@ -20,22 +20,18 @@ export class AdminGuard implements CanActivateChild {
   ): boolean {
     // comprobacion de un inicio de sesion
     if (this.auth.getSession() !== null) {
-      console.log('Se ha iniciado sesión correctamente');
       const dataDecode = this.decodeToken();
-      console.log(dataDecode);
+
       // comprobacion de la caducidad del token
       if (dataDecode.exp < new Date().getTime() / 1000) {
-        console.log('Sesión caducada');
         return this.redirect();
       }
       // comprobacion del rol de administradir
       if (dataDecode.user.role === 'ADMIN') {
-        console.log('Rol de Admin');
         return true;
       }
-      console.log('No contamos con el rol de administrador');
     }
-    console.log('Sesion invalida');
+
     return this.redirect();
   }
   redirect() {

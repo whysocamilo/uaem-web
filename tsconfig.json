@@ -11,6 +11,7 @@
       "@graphql/*":["src/app/@graphql/*"],
       "@core/*":["src/app/@core/*"],
       "@shared/*":["src/app/@shared/*"],
+      "@data/*":["src/assets/@data/*"],
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
@@ -24,7 +25,9 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false

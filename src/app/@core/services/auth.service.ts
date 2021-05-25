@@ -30,13 +30,11 @@ export class AuthService extends ApiService {
         }
         this.updateSession(result);
       });
-      console.log('Sesion iniciada');
       return;
     }
     this.updateSession({
       status: false,
     });
-    console.log('Sesion fallida');
   }
 
   login(email: string, password: string) {

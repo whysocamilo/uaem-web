@@ -1,6 +1,9 @@
 import { Router } from '@angular/router';
 import { UsersService } from '@core/services/users.service';
-import {IRegisterForm, IResultRegister } from '@core/interfaces/register.interface';
+import {
+  IRegisterForm,
+  IResultRegister,
+} from '@core/interfaces/register.interface';
 import { Component, OnInit } from '@angular/core';
 import { basicAlert } from '@shared/alerts/toasts';
 import { TYPE_ALERT } from '@shared/alerts/values.config';
@@ -25,7 +28,6 @@ export class RegisterComponent implements OnInit {
     const data = new Date();
     data.setFullYear(data.getFullYear() - 5);
     this.register.birthday = data.toISOString().substring(0, 10);
-    console.log(this.register);
   }
   // date
   private formatNumbers(num: number | string) {
@@ -33,7 +35,6 @@ export class RegisterComponent implements OnInit {
   }
   // format date
   dataAsign($event) {
-    console.log('registro con datos', $event);
     const fecha = `${$event.year}-${this.formatNumbers(
       $event.month
     )}-${this.formatNumbers($event.day)}`;
@@ -41,9 +42,7 @@ export class RegisterComponent implements OnInit {
   }
   // register
   add() {
-    console.log('Enviando datos', this.register);
     this.api.register(this.register).subscribe((result: IResultRegister) => {
-      console.log('Result', result);
       if (!result.status) {
         basicAlert(TYPE_ALERT.WARNING, result.message);
         return;
