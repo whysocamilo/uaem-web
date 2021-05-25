@@ -21,7 +21,6 @@ export class LoginComponent{
     this.auth
       .login(this.login.email, this.login.password)
       .subscribe((result: IResultLogin) => {
-        console.log(result);
         if (result.status) {
           if (result.token !== null) {
             basicAlert(TYPE_ALERT.SUCCESS, result.message);

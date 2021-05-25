@@ -23,7 +23,6 @@ export class ActiveComponent implements OnInit {
   ) {
     this.route.params.subscribe((params) => {
       this.token = params.token;
-      console.log(this.token);
     });
   }
 
@@ -31,17 +30,15 @@ export class ActiveComponent implements OnInit {
     const data = new Date();
     data.setFullYear(data.getFullYear() - 18);
     this.values.birthday = data.toISOString().substring(0, 10);
-    console.log(this.values);
   }
   private formatNumbers(num: number | string) {
     return +num < 10 ? `0${num}` : num;
   }
   dataAsign($event) {
-    console.log('Activar cogiendo dato', $event);
     const fecha = `${$event.year}-${this.formatNumbers(
       $event.month
     )}-${this.formatNumbers($event.day)}`;
-    console.log(fecha);
+
     this.values.birthday = fecha;
   }
   add() {

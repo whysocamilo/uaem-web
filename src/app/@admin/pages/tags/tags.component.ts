@@ -85,7 +85,7 @@ export class TagsComponent implements OnInit {
   }
   private async addForm(html: string) {
     const result = await formBasicDialog('Añadir tag', html, 'name');
-    console.log(result);
+  
     this.addtag(result);
   }
   private addtag(result) {
@@ -106,10 +106,10 @@ export class TagsComponent implements OnInit {
   }
 
   private updateTag(id: string, result) {
-    console.log(id, result.value);
+    
     if (result.value) {
       this.service.update(id, result.value).subscribe((res: any) => {
-        console.log(res);
+      
         if (res.status) {
           basicAlert(TYPE_ALERT.SUCCESS, res.message);
           return;
@@ -121,7 +121,6 @@ export class TagsComponent implements OnInit {
 
   private blockTag(id: string) {
     this.service.block(id).subscribe((res: any) => {
-      console.log(res);
       if (res.status) {
         basicAlert(TYPE_ALERT.SUCCESS, res.message);
         return;
