@@ -1,13 +1,14 @@
+import { map } from 'rxjs/internal/operators/map';
 import { Injectable } from '@angular/core';
+import { ApiService } from '@graphql/services/api.service';
+import { Apollo } from 'apollo-angular';
 import { ACTIVE_FILTERS } from '@core/constants/filters';
 import {
   SHOP_LAST_UNITS_OFFERS,
   SHOP_PRODUCT_BY_PLATFORM,
 } from '@graphql/operations/query/shop-product';
-import { ApiService } from '@graphql/services/api.service';
 import { IProduct } from '@mugan86/ng-shop-ui/lib/interfaces/product.interface';
-import { Apollo } from 'apollo-angular';
-import { map } from 'rxjs/internal/operators/map';
+
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +23,9 @@ export class ProductsService extends ApiService {
     itemsPage: number = 10,
     active: ACTIVE_FILTERS = ACTIVE_FILTERS.ACTIVE,
     random: boolean = false,
-    platform: string
+    platform: Array<string> = ['-1'],
+    showInfo: boolean = false,
+    showPlatform: boolean = false
   ) {
     return this.get(SHOP_PRODUCT_BY_PLATFORM, {
       page,
@@ -30,9 +33,15 @@ export class ProductsService extends ApiService {
       active,
       random,
       platform,
+      showInfo,
+      showPlatform,
     }).pipe(
       map((result: any) => {
-        return this.manageInfo(result.shopProductsPlatforms.shopProducts);
+        const data = result.shopProductsPlatforms;
+        return {
+          info: data.info,
+          result: this.manageInfo(data.shopProducts),
+        };
       })
     );
   }
@@ -43,7 +52,9 @@ export class ProductsService extends ApiService {
     active: ACTIVE_FILTERS = ACTIVE_FILTERS.ACTIVE,
     random: boolean = false,
     topPrice: number = -1,
-    lastUnits: number = -1
+    lastUnits: number = -1,
+    showInfo: boolean = false,
+    showPlatform: boolean = false
   ) {
     return this.get(SHOP_LAST_UNITS_OFFERS, {
       page,
@@ -52,14 +63,20 @@ export class ProductsService extends ApiService {
       random,
       topPrice,
       lastUnits,
+      showInfo,
+      showPlatform,
     }).pipe(
       map((result: any) => {
-        return this.manageInfo(result.shopProductsOffersLast.shopProducts);
+        const data = result.shopProductsOffersLast;
+        return {
+          info: data.info,
+          result: this.manageInfo(data.shopProducts),
+        };
       })
     );
   }
 
-  private manageInfo(listProducts) {
+  private manageInfo(listProducts: any, showDescription = true) {
     const resultList: Array<IProduct> = [];
     listProducts.map((shopObject) => {
       resultList.push({
@@ -67,7 +84,10 @@ export class ProductsService extends ApiService {
         img: shopObject.product.img,
         name: shopObject.product.name,
         rating: shopObject.product.rating,
-        description: '',
+        description:
+          shopObject.platform && showDescription
+            ? shopObject.platform.name
+            : '',
         qty: 1,
         price: shopObject.price,
         stock: shopObject.stock,

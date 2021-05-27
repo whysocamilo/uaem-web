@@ -1,5 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap");
 
 .navbar .navbar-brand {
   font-size: 25px;
@@ -8,10 +7,12 @@
   text-transform: uppercase;
   color: #222;
   margin-left: 70px;
-  font-family:'Handlee';
+  font-family: "Handlee";
+  margin-right: 480px;
 }
-.ml-auto, .mx-auto {
-  margin-left: auto!important;
+.ml-auto,
+.mx-auto {
+  margin-left: auto !important;
   margin-right: 32px;
 }
 .navbar {
@@ -19,9 +20,26 @@
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.05);
 }
 .custom-bg {
-  background:#ffffff;
-
+  background: #ffffff;
 }
+.navbar-nav.navbar-center {
+  position: relative;
+  left: 30%;
+  transform: translatex(-50%);
+}
+@media (max-width: 768px) {
+  .navbar .navbar-brand {
+    font-size: 25px;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    color: #222;
+    margin-left: 70px;
+    font-family: "Handlee";
+  }
+}
+
+
 .navbar a {
   display: block;
   position: relative;

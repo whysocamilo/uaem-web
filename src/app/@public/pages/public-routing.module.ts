@@ -18,6 +18,11 @@ const routes: Routes = [
           import('./contacto/contacto.module').then((m) => m.ContactoModule),
       },
       {
+        path: 'products/:type/:filter',
+        loadChildren: () =>
+          import('./products/products.module').then((m) => m.ProductsModule),
+      },
+      {
         path: 'login',
         loadChildren: () =>
           import('./forms/login/login.module').then((m) => m.LoginModule),

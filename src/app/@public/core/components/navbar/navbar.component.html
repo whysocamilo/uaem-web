@@ -20,53 +20,13 @@
     class="collapse navbar-collapse align-items-center"
     id="navbarTogglerDemo02"
   >
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav mr-auto" *ngFor="let item of menuItems">
       <li class="nav-item">
         <a
           class="nav-link"
-          [routerLink]="['/']"
+          [routerLink]="item.url"
           routerLinkActive="router-link-active"
-          >Inicio</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          [routerLink]="['/']"
-          routerLinkActive="router-link-active"
-          >Hombres</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          [routerLink]="['/']"
-          routerLinkActive="router-link-active"
-          >Mujeres</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          [routerLink]="['/']"
-          routerLinkActive="router-link-active"
-          >Niños</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          [routerLink]="['/']"
-          routerLinkActive="router-link-active"
-          >Accesorios</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          [routerLink]="['/']"
-          routerLinkActive="router-link-active"
-          >Premium</a
+          >{{ item.label }}</a
         >
       </li>
     </ul>
@@ -105,7 +65,7 @@
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-        {{ userLabel }}
+          {{ userLabel }}
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <li><a class="dropdown-item" href="#">Perfil</a></li>

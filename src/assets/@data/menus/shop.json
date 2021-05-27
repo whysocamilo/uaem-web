@@ -1,0 +1,32 @@
+[
+    {
+        "url": "/",
+        "label": "Inicio",
+        "icon": ""
+    },
+    {
+        "url": "/products/platforms/men",
+        "label": "Hombres",
+        "icon": ""
+    },
+    {
+        "url": "/products/platforms/woman",
+        "label": "Mujeres",
+        "icon": ""
+    },
+    {
+        "url": "/products/platforms/kids",
+        "label": "Niños",
+        "icon": ""
+    },
+    {
+        "url": "/products/platforms/accessories",
+        "label": "Accesorios",
+        "icon": ""
+    },
+    {
+        "url": "/products/platforms/premium",
+        "label": "Premium",
+        "icon": ""
+    }
+]
