@@ -13,14 +13,19 @@ const routes: Routes = [
           import('./inicio/inicio.module').then((m) => m.InicioModule),
       },
       {
-        path: 'contacto',
+        path: 'products/details/:id',
         loadChildren: () =>
-          import('./contacto/contacto.module').then((m) => m.ContactoModule),
+          import('./products/details/details.module').then((m) => m.DetailsModule),
       },
       {
         path: 'products/:type/:filter',
         loadChildren: () =>
           import('./products/products.module').then((m) => m.ProductsModule),
+      },
+       {
+        path: 'contacto',
+        loadChildren: () =>
+          import('./contacto/contacto.module').then((m) => m.ContactoModule),
       },
       {
         path: 'login',

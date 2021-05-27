@@ -1,0 +1,80 @@
+<!-- Page Content -->
+<div class="container" *ngIf="product && !loading">
+  <!-- Portfolio Item Row -->
+  <div class="row">
+    <div class="col-md-1" id="screens-section">
+      <img
+        class="img-fluid"
+        *ngFor="let miniImg of screens; let i = index"
+        [src]="miniImg"
+        alt="Screen {{ i }}"
+        (click)="selectImgMain(i)"
+      />
+    </div>
+    <div class="col-md-7">
+      <img class="img-fluid main-img" [src]="selectImage" alt="" />
+    </div>
+    <div class="col-md-4">
+      <h4 class="my-2">{{ product.description }}</h4>
+      <h4 class="my-3">{{ product.name }}</h4>
+      <div class="row">
+        <div class="col-lg-12">
+          <ng-template #noDiscount>
+            <div class="price">{{ currencySelect }} {{ product.price }}</div>
+          </ng-template>
+          <div class="price" *ngIf="product.discount; else noDiscount">
+            {{ currencySelect }} {{ product.priceDiscount | number }}
+            <span> {{ currencySelect }} {{ product.price | number }} </span>
+            <span class="discount-percentage">
+              ({{ product.discount }} %)
+            </span>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <h5 class="stock-d">Disponible.</h5>
+          <!--Stock: {{ product.stock }}-->
+          <h5 class="product-st">Elige tus productos</h5>
+          <shop-qty-selector
+            [qty]="product.qty"
+            [stock]="product.stock"
+            (updateValue)="changeValue($event)"
+          ></shop-qty-selector>
+        </div>
+        <a class="btn-buy">Agregar al Carrito</a>
+        <details>
+          <summary>
+            <h3>Tamaño y Tallas</h3>
+          </summary>
+          <p>
+            Si desea saber más sobre las tallas o tamaño de los productos
+            recomendamos que nos contactes al correo <strong>uaemstore@gmail.com</strong>
+          </p>
+        </details>
+        <details>
+          <summary>
+            <h3>Envíos y devoluciones gratis</h3>
+          </summary>
+          <p>Envío gratis exclusivo para Miembros UAEM.</p>
+          <ul>
+            <li>
+              Debido a las medidas actuales para proteger la seguridad de los
+              empleados de nuestro centro de distribución con motivo del
+              COVID-19, las entregas pueden presentar un retraso.
+            </li>
+            <li>Envíos y devoluciones gratis para estudiantes UAEM.</li>
+          </ul>
+        </details>
+        <details>
+          <summary>
+            <h3>Evaluaciones</h3>
+          </summary>
+          <div class="col-lg-12">
+            <h3>Calificación del producto</h3>
+            <shop-rating [rating]="product.rating"></shop-rating>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+</div>

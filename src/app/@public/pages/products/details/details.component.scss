@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pattaya&display=swap");
+
+/*--------------------------------------------------------------
+  # Hero Section
+  --------------------------------------------------------------*/
+
+.container {
+  margin-top: 60px;
+  margin-bottom: 85px;
+}
+
+.mini {
+  margin-bottom: 10px;
+}
+
+.my-2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  color: #3e2b2e;
+}
+
+.my-3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 40px;
+  color: #291f21;
+  font-weight: 500;
+}
+
+/*--------------------------------------------------------------
+  # Price Section
+  --------------------------------------------------------------*/
+
+.price {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+  color: #291f21;
+  text-align: left;
+  margin-left: 5px;
+  margin-bottom: 12px;
+}
+
+.price span {
+  font-size: 18px;
+  font-weight: 400;
+  color: #999;
+  text-align: left;
+  margin-left: 5px;
+  margin-bottom: 12px;
+  text-decoration: line-through;
+}
+
+.price span.discount-percentage {
+  text-decoration: none;
+}
+
+
+img {
+ transition: all ease-in-out 0.4s;
+}
+img:hover {
+  max-width: 95%;
+  height: 750;
+  transform:scale(1.1);
+}
+
+
+/*--------------------------------------------------------------
+  # Stock Section
+  --------------------------------------------------------------*/
+.stock-d {
+  font-family: "Poppins";
+  font-weight: 400;
+  color: #058552;
+  font-size: 20px;
+}
+
+.product-st {
+  font-weight: 500;
+  font-size: 15px;
+  color: #3e2b2e;
+  margin-bottom: 25px;
+  margin-top: 20px;
+}
+.btn-buy {
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 10px 35px;
+  border-radius: 50px;
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  width: 50%;
+}
+.btn-buy:hover {
+  background: #303133;
+}
+
+/*--------------------------------------------------------------
+  # Extra Section
+  --------------------------------------------------------------*/
+section {
+  padding-top: 4rem;
+  width: 50%;
+  margin: auto;
+}
+details[open] summary ~ * {
+  animation: open 0.3s ease-in-out;
+}
+
+@keyframes open {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details summary {
+  width: 100%;
+  padding: 0.5rem 0;
+  border-top: 1px solid rgba(70, 70, 70, 0.596);
+  position: relative;
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: 300;
+  list-style: none;
+}
+
+details summary:after {
+  content: "+";
+  color: rgba(70, 70, 70, 0.596);
+  position: absolute;
+  top: 20px;
+  font-size: 1.75rem;
+  line-height: 0;
+  margin-top: 0.75rem;
+  right: 0;
+  font-weight: 200;
+  transform-origin: center;
+  transition: 200ms linear;
+}
+details[open] summary:after {
+  transform: rotate(45deg);
+  font-size: 2rem;
+}
+details summary {
+  outline: 0;
+}
+details p {
+  font-size: 0.95rem;
+  margin: 0 0 1rem;
+  
+}
+details h3 {
+  font-size: 0.95rem;
+  margin: 0 0 1rem;
+  padding-top: 1rem;
+}
+
+/*--------------------------------------------------------------
+  # Responsive Section
+  --------------------------------------------------------------*/
+
+@media (max-width: 600px) {
+  #screens-section {
+    display: none;
+  }
+}
+/*--------------------------------------------------------------
+  # Disable aos animation delay on mobile devices
+  --------------------------------------------------------------*/
+  @media screen and (max-width: 768px) {
+    img {
+      transition: none
+     }
+     img:hover {
+       max-width: inherit;
+       height: inherit;
+       transform:none;
+     }
+     
+    
+  }

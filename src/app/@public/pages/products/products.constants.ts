@@ -25,7 +25,6 @@ export const PRODUCTS_PAGES_INFO = {
   },
   'platforms/premium': {
     title: 'Premium',
-
     platformsIds: ['5'],
     topPrice: -1,
     stock: -1,

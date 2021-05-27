@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { CURRENCIES_SYMBOL, CURRENCY_LIST } from '@mugan86/ng-shop-ui';
 import { IProduct } from '@mugan86/ng-shop-ui/lib/interfaces/product.interface';
 
@@ -12,11 +13,10 @@ export class ProductCategoryListComponent {
   @Input() title = '';
   @Input() productsList: Array<IProduct> = [];
   @Input() description = '';
-  constructor() {}
-  addToCart($event: IProduct) {
-    console.log('Add to cart', $event);
-  }
+  constructor(private router: Router) { }
+
+  addToCart($event: IProduct) {}
   showProductDetails($event: IProduct) {
-    console.log('Shoe details', $event);
+    this.router.navigate(['/products/details', +$event.id]);
   }
 }
