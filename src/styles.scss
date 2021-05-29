@@ -43,3 +43,15 @@ app-details .btn{
     background-color: rgb(65, 61, 61);
     border: inherit;
 }
+//checkout details
+ng-stripe-pay-form #card-errors {
+    font-family: 'Poppins', sans-serif;
+    background-color: inherit !important;
+    font-size: 14px;
+    font-weight: 500;
+    color: red !important;
+}
+
+ng-stripe-pay-form #card-img {
+    max-width: 115px !important;
+}

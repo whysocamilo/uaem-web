@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  backend: 'http://localhost:8000/graphql'
+  backend: 'http://localhost:8000/graphql',
+  stripePublicKey: 'pk_test_51IwT18FWQ9psjYcAT1G1k6zOazJIlA2trhtmr0ZBMaDEiaNlgTgta049F3IaqP1sBFiXXEMq1CeGcf5UJsuc4fDI00pTtnF1dg'
 };
 
 /*

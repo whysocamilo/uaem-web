@@ -1,0 +1,34 @@
+<div class="container" *ngIf="!loading">
+  <h4>Mis pedidos</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr class="col-1">
+        <th scope="col">Descripción</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Factura</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of charges">
+        <td>{{ data.description }}</td>
+        <td>{{ data.amount }}</td>
+        <td>{{ data.created | date: "yyyy-MM-dd" }}</td>
+        <td>
+          <a class="check" href="{{ data.receiptUrl }}" target="_blank">Pedido</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="col-lg text-center">
+      <button
+        *ngIf="loadMoreBtn"
+        class="btn btn-dark"
+        (click)="loadChargesData()"
+      >
+        Cargar más datos
+      </button>
+    </div>
+  </div>
+</div>

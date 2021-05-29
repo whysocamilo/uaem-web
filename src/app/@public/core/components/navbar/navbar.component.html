@@ -30,8 +30,17 @@
         >
       </li>
     </ul>
+    
     <!--Parte izquierda del menu admon-->
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a
+          class="nav-link-xd"
+          [routerLink]="['/cart']"
+          routerLinkActive="router-link-active"
+          >Carrito<strong>({{ cartItemsTotal }})</strong></a
+        >
+      </li>
       <li class="nav-item" *ngIf="!access">
         <a
           class="nav-link"
@@ -71,18 +80,9 @@
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <li><a class="dropdown-item" href="#">Perfil</a></li>
-          <li><a class="dropdown-item" href="#">Configuración</a></li>
+          <a class="dropdown-item" [routerLink]="['/orders']" routerLinkActive="router-link-active" >Pedidos</a>
           <li><a class="dropdown-item" (click)="logout()">Cerrar sesión</a></li>
         </ul>
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link-xd"
-          [routerLink]="['/cart']"
-          routerLinkActive="router-link-active"
-          >Carrito<strong>({{ cartItemsTotal }})</strong></a
-          
-        >
       </li>
     </ul>
   </div>

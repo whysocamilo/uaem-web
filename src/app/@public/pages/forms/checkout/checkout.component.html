@@ -1,4 +1,4 @@
-<div class="container mt-5 mb-5">
+<div class="container mt-5 mb-5" *ngIf="meData && available">
   <div class="row g-5">
     <div class="col-md-5 col-lg-4 order-md-last">
       <app-checkout-resume></app-checkout-resume>
@@ -7,26 +7,16 @@
       <h4 class="mb-3">Dirección de envío</h4>
       <hr />
       <br />
-      <form class="needs-validation" novalidate="">
+      <form class="needs-validation" (ngSubmit)="sendData()" #forma="ngForm">
         <div class="row g-3">
           <div class="col-sm-6">
             <label for="firstName" class="form-label">Nombre(s)</label>
-            <input
-              type="text"
-              class="form-control"
-              id="firstName"
-             
-            />
+            <input type="text" class="form-control" id="firstName" />
           </div>
 
           <div class="col-sm-6">
             <label for="lastName" class="form-label">Apellido(s)</label>
-            <input
-              type="text"
-              class="form-control"
-              id="lastName"
-             
-            />
+            <input type="text" class="form-control" id="lastName" />
           </div>
 
           <div class="col-12">
@@ -36,9 +26,25 @@
               class="form-control"
               id="address"
               placeholder="Av. Universidad"
+              #addressData="ngModel"
+              [(ngModel)]="address"
+              name="address"
               required=""
             />
             <div class="invalid-feedback">Ingresa una dirección</div>
+          </div>
+
+          <div class="col-12">
+            <label for="address2" class="form-label"
+              >Referencia
+              <span class="text-muted">(Optional)</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="ref"
+              placeholder="Puerta blanca"
+            />
           </div>
 
           <div class="col-12">
@@ -56,7 +62,6 @@
         </div>
 
         <hr class="my-4" />
-
         <h4 class="mb-3">Forma de pago</h4>
 
         <div class="my-3">
@@ -87,59 +92,21 @@
           </div>
         </div>
         <br />
-        <div class="row gy-3">
-          <div class="col-md-6">
-            <label for="cc-name" class="form-label">Nombre y apellido</label>
-            <input
-              type="text"
-              class="form-control"
-              id="cc-name"
-              placeholder=""
-              required=""
-            />
-            <div class="invalid-feedback">Name on card is required</div>
-          </div>
-
-          <div class="col-md-6">
-            <label for="cc-number" class="form-label">Número de tarjeta</label>
-            <input
-              type="text"
-              class="form-control"
-              id="cc-number"
-              placeholder=""
-              required=""
-            />
-            <div class="invalid-feedback">Credit card number is required</div>
-          </div>
-
-          <div class="col-md-3">
-            <label for="cc-expiration" class="form-label">Expiración</label>
-            <input
-              type="text"
-              class="form-control"
-              id="cc-expiration"
-              placeholder=""
-              required=""
-            />
-            <div class="invalid-feedback">Expiration date required</div>
-          </div>
-
-          <div class="col-md-3">
-            <label for="cc-cvv" class="form-label">CVV</label>
-            <input
-              type="text"
-              class="form-control"
-              id="cc-cvv"
-              placeholder=""
-              required=""
-            />
-            <div class="invalid-feedback">Security code required</div>
+        <div class="rowxd">
+          <div class="col-lg">
+            <ng-stripe-pay-form
+              [key]="key"
+              [hidePostalCode]="true"
+            ></ng-stripe-pay-form>
           </div>
         </div>
 
-        <hr class="my-4" />
-
-        <button class="w-100 btn btn-primary btn-lg" type="submit">
+        <button
+          class="btn-buy"
+          [disabled]="!forma.valid || block"
+          (click)="sendData()"
+          type="submit"
+        >
           PAGAR AHORA
         </button>
       </form>

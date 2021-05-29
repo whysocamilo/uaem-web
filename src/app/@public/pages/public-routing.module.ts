@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ShopGuard } from '@core/guards/shop.guard';
 import { PublicComponent } from './public.component';
 // rutas para el menu principal del cliente
 const routes: Routes = [
@@ -33,6 +34,13 @@ const routes: Routes = [
         path: 'checkout',
         loadChildren: () =>
           import('./forms/checkout/checkout.module').then((m) => m.CheckoutModule),
+          canActivate: [ShopGuard]
+      },
+      {
+        path: 'orders',
+        loadChildren: () =>
+          import('./orders/orders.module').then((m) => m.OrdersModule),
+          canActivate: [ShopGuard]
       },
       {
         path: 'contact',
