@@ -40,14 +40,17 @@
             (updateValue)="changeValue($event)"
           ></shop-qty-selector>
         </div>
-        <a class="btn-buy">Agregar al Carrito</a>
+        <button (click)="addToCart()" class="btn-buy">
+          Agregar al Carrito
+        </button>
         <details>
           <summary>
             <h3>Tamaño y Tallas</h3>
           </summary>
           <p>
             Si desea saber más sobre las tallas o tamaño de los productos
-            recomendamos que nos contactes al correo <strong>uaemstore@gmail.com</strong>
+            recomendamos que nos contactes al correo:
+            <strong>uaemstore@gmail.com</strong>
           </p>
         </details>
         <details>
@@ -76,5 +79,4 @@
       </div>
     </div>
   </div>
-
 </div>

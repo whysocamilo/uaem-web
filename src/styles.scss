@@ -22,3 +22,24 @@ app-product-category-list .container h2{
 app-product-category-list .container hr{
     opacity: 0 !important;
 }
+
+//cart
+app-shopping-cart  .card {
+    border: inherit !important;
+}
+app-shopping-cart  .quantity {
+    display: inline-block;
+    
+}
+app-shopping-cart .btn{
+    border-radius: inherit !important;
+    background-color: rgb(65, 61, 61);
+    border: inherit;
+}
+
+//product details
+app-details .btn{
+    border-radius: inherit !important;
+    background-color: rgb(65, 61, 61);
+    border: inherit;
+}

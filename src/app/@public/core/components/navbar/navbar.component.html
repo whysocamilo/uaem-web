@@ -32,14 +32,6 @@
     </ul>
     <!--Parte izquierda del menu admon-->
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-      <li class="nav-item" *ngIf="access && role == 'ADMIN'">
-        <a
-          class="nav-link"
-          [routerLink]="['/admin']"
-          routerLinkActive="router-link-active"
-          >Admin</a
-        >
-      </li>
       <li class="nav-item" *ngIf="!access">
         <a
           class="nav-link"
@@ -48,7 +40,16 @@
           >Ingresa</a
         >
       </li>
-      <li class="nav-item" *ngIf="!access">
+      <li class="nav-item" *ngIf="access && role == 'ADMIN'">
+        <a
+          class="nav-link"
+          [routerLink]="['/admin']"
+          routerLinkActive="router-link-active"
+          >Admin</a
+        >
+      </li>
+      <!--
+        <li class="nav-item" *ngIf="!access">
         <a
           class="nav-link"
           [routerLink]="['/register']"
@@ -56,6 +57,7 @@
           >Crea tu cuenta</a
         >
       </li>
+      -->
       <li class="nav-item dropdown" *ngIf="access">
         <a
           class="nav-link"
@@ -72,6 +74,15 @@
           <li><a class="dropdown-item" href="#">Configuración</a></li>
           <li><a class="dropdown-item" (click)="logout()">Cerrar sesión</a></li>
         </ul>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link-xd"
+          [routerLink]="['/cart']"
+          routerLinkActive="router-link-active"
+          >Carrito<strong>({{ cartItemsTotal }})</strong></a
+          
+        >
       </li>
     </ul>
   </div>

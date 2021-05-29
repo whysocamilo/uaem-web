@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
-import { IResultLogin, ILoginForm} from '@core/interfaces/login.interface';
+import { IResultLogin, ILoginForm } from '@core/interfaces/login.interface';
 import { AuthService } from '@core/services/auth.service';
 import { basicAlert } from '@shared/alerts/toasts';
 import { TYPE_ALERT } from '@shared/alerts/values.config';
@@ -10,7 +10,7 @@ import { TYPE_ALERT } from '@shared/alerts/values.config';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent{
+export class LoginComponent {
   login: ILoginForm = {
     email: '',
     password: '',
@@ -23,9 +23,13 @@ export class LoginComponent{
       .subscribe((result: IResultLogin) => {
         if (result.status) {
           if (result.token !== null) {
-            basicAlert(TYPE_ALERT.SUCCESS, result.message);
             this.auth.setSession(result.token);
             this.auth.updateSession(result);
+            if (localStorage.getItem('route_after_login')) {
+              this.router.navigate([localStorage.getItem('route_after_login')]);
+              localStorage.removeItem('route_after_login');
+              return;
+            }
             this.router.navigate(['/']);
             return;
           }

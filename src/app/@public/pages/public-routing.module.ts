@@ -15,15 +15,27 @@ const routes: Routes = [
       {
         path: 'products/details/:id',
         loadChildren: () =>
-          import('./products/details/details.module').then((m) => m.DetailsModule),
+          import('./products/details/details.module').then(
+            (m) => m.DetailsModule
+          ),
       },
       {
         path: 'products/:type/:filter',
         loadChildren: () =>
           import('./products/products.module').then((m) => m.ProductsModule),
       },
-       {
-        path: 'contacto',
+      {
+        path: 'cart',
+        loadChildren: () =>
+        import('./shopping-cart/shopping-cart.module').then((m) => m.ShoppingCartModule),
+      },
+      {
+        path: 'checkout',
+        loadChildren: () =>
+          import('./forms/checkout/checkout.module').then((m) => m.CheckoutModule),
+      },
+      {
+        path: 'contact',
         loadChildren: () =>
           import('./contacto/contacto.module').then((m) => m.ContactoModule),
       },
@@ -34,7 +46,10 @@ const routes: Routes = [
       },
       {
         path: 'register',
-        loadChildren: () => import('./forms/register/register.module').then(m => m.RegisterModule)
+        loadChildren: () =>
+          import('./forms/register/register.module').then(
+            (m) => m.RegisterModule
+          ),
       },
       {
         path: 'active/:token',

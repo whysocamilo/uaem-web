@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartService } from '@client/core/services/cart.service.ts.service';
 import { CURRENCIES_SYMBOL, CURRENCY_LIST } from '@mugan86/ng-shop-ui';
 import { IProduct } from '@mugan86/ng-shop-ui/lib/interfaces/product.interface';
 
@@ -13,9 +14,12 @@ export class ProductCategoryListComponent {
   @Input() title = '';
   @Input() productsList: Array<IProduct> = [];
   @Input() description = '';
-  constructor(private router: Router) { }
+  @Input() showDesc: boolean;
+  constructor(private router: Router, private cartService: CartService) {}
 
-  addToCart($event: IProduct) {}
+  addToCart($event: IProduct) {
+    this.cartService.manageProduct($event);
+  }
   showProductDetails($event: IProduct) {
     this.router.navigate(['/products/details', +$event.id]);
   }
