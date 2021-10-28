@@ -48,6 +48,21 @@ const routes: Routes = [
           import('./contacto/contacto.module').then((m) => m.ContactoModule),
       },
       {
+        path: 'faq',
+        loadChildren: () =>
+          import('./contacto/faq/faq.module').then((m) => m.FaqModule),
+      },
+      {
+        path: 'terms',
+        loadChildren: () =>
+          import('./contacto/terminos/terminos.module').then((m) => m.TerminosModule),
+      },
+      {
+        path: 'privacy',
+        loadChildren: () =>
+          import('./contacto/politicas/politicas.module').then((m) => m.PoliticasModule),
+      },
+      {
         path: 'login',
         loadChildren: () =>
           import('./forms/login/login.module').then((m) => m.LoginModule),

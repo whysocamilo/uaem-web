@@ -5,9 +5,12 @@
     data-aos="zoom-in"
     data-aos-delay="100"
   >
-    <h1>Las Ofertas de Verano<br />estan aqui</h1>
+    <h1>Las Mejores Ofertas<br />estan aqui</h1>
     <h2>Hasta un 30% de Descuento</h2>
-    <a class="btn-buy">COMPRAR AHORA</a>
+    <a class="btn-buy"
+    [routerLink]="['products/platforms/accessories']"
+    routerLinkActive="router-link-active"
+    >COMPRAR AHORA</a>
   </div>
 </section>
 
@@ -27,7 +30,7 @@
         <div class="gallery-item">
           <a class="gallery-lightbox">
             <img
-              src="https://pbs.twimg.com/media/E1xwvnjVcAQtX_x?format=jpg&name=4096x4096"
+              src="https://i.imgur.com/fZb8rdn.png"
               alt="mujeres"
               class="img-fluid"
               [routerLink]="['products/platforms/woman']"
@@ -41,9 +44,11 @@
         <div class="gallery-item">
           <a class="gallery-lightbox">
             <img
-              src="https://pbs.twimg.com/media/E1x2j8xVcAAEz_b?format=jpg&name=4096x4096"
+              src="https://i.imgur.com/XYqyhlj.png"
               alt="hombres"
               class="img-fluid"
+              [routerLink]="['products/platforms/men']"
+              routerLinkActive="router-link-active"
             />
           </a>
         </div>
@@ -52,9 +57,11 @@
         <div class="gallery-item">
           <a class="gallery-lightbox">
             <img
-              src="https://pbs.twimg.com/media/E1yBNIQVkAAYVd6?format=jpg&name=4096x4096"
+              src="https://i.imgur.com/y1ltNfg.png"
               alt="chamacos"
               class="img-fluid"
+              [routerLink]="['products/platforms/kids']"
+              routerLinkActive="router-link-active"
             />
           </a>
         </div>
@@ -64,9 +71,11 @@
         <div class="gallery-item">
           <a class="gallery-lightbox">
             <img
-              src="https://pbs.twimg.com/media/E1x92ykUcAECRh-?format=jpg&name=4096x4096"
+              src="https://i.imgur.com/OyzAaHp.png"
               alt="accesorios"
               class="img-fluid"
+              [routerLink]="['products/platforms/accessories']"
+              routerLinkActive="router-link-active"
             />
           </a>
         </div>
@@ -81,7 +90,7 @@
     <div class="text-center">
       <h3>Los productos de la mejor calidad solo en #UAEM Store</h3>
       <p>ㅤㅤㅤ</p>
-      <a class="cta-btn" href="#">Ver mas</a>
+      <a class="cta-btn" href="">Ver mas</a>
     </div>
   </div>
 </section>
@@ -102,6 +111,8 @@
               src="https://pbs.twimg.com/media/E1zXxOtVkAgE8Rj?format=jpg&name=large"
               class="img-fluid"
               alt=""
+              [routerLink]="['products/platforms/woman']"
+              routerLinkActive="router-link-active"
             />
           </div>
           <div class="member-info">
@@ -117,6 +128,8 @@
               src="https://pbs.twimg.com/media/E1zZOQKUcAcmNSA?format=jpg&name=large"
               class="img-fluid"
               alt=""
+              [routerLink]="['products/platforms/men']"
+              routerLinkActive="router-link-active"
             />
           </div>
           <div class="member-info">
@@ -132,6 +145,8 @@
               src="https://pbs.twimg.com/media/E1zW73pVEAI56LQ?format=jpg&name=large"
               class="img-fluid"
               alt=""
+              [routerLink]="['products/platforms/accessories']"
+              routerLinkActive="router-link-active"
             />
           </div>
           <div class="member-info">

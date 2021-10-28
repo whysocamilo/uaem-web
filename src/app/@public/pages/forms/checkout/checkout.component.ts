@@ -116,15 +116,255 @@ export class CheckoutComponent implements OnInit {
   sendEmail(charge: ICharge) {
     const mail: IMail = {
       to: charge.receiptEmail,
-      subject: 'Recibo de su pago a Uaem Store S.A. de C.V.',
-      html: `
-      Envió un pago Uaem Store S.A. de C.V.<strong>(info@uaemstore.mx)</strong><br>
-      <br><strong>Puede tomar unos minutos que esta transacción aparezca en su cuenta.</strong><br>
-      <br> Puedes consultarlo su recibo de compra: <a href="${charge.receiptUrl}" target="_blank">Aqui</a><br>
-      <br> <strong>¿Tiene problemas con esta transacción?</strong> <br>
-      <br> Dispone de 180 días desde la fecha de la transacción para presentar una controversia en el Centro de resoluciones.<br>
-      <br>Gracias.
-      <br>Equipo de cuentas UAEM.
+      subject: 'Factura emitida ',
+      html: ` 
+      <div class="">
+      <div class="aHl"></div>
+      <div id=":cm" tabindex="-1"></div>
+      <div id=":e6" class="ii gt">
+        <div id=":e5" class="a3s aiL">
+          <u></u>
+          <div>
+            <table
+              width="100%"
+              border="0"
+              cellspacing="0"
+              cellpadding="0"
+              bgcolor="#ffffff"
+            >
+              <tbody>
+                <tr>
+                  <td style="font-size: 0">&nbsp;</td>
+                  <td
+                    align="center"
+                    valign="middle"
+                    width="600"
+                    height="300"
+                    bgcolor="#ffffff"
+                  >
+                    <table
+                      width="100%"
+                      border="0"
+                      cellpadding="0"
+                      cellspacing="0"
+                      style="
+                        background-color: #ffffff;
+                        border: solid 1px #dddddd;
+                        margin-top: 16px;
+                        border-radius: 8px 8px 0px 0px;
+                      "
+                    >
+                      <tbody>
+                        <tr></tr>
+                        <tr></tr>
+                        <tr>
+                          <td
+                            style="
+                              text-align: left;
+                              height: 64px;
+                              padding: 12px 0px 4px 16px;
+                            "
+                          >
+                            <a>
+                              <h2
+                                style="
+                                  margin-top: 0px;
+                                  margin-bottom: 8px;
+                                  color: #1b5ab9;
+                                "
+                              >
+                                UAEM STORE
+                              </h2>
+                            </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table
+                      width="100%"
+                      border="0"
+                      cellpadding="0"
+                      cellspacing="0"
+                      style="
+                        background-color: #ffffff;
+                        border-bottom: solid 1px #dddddd;
+                        border-right: solid 1px #dddddd;
+                        border-left: solid 1px #dddddd;
+                      "
+                    >
+                      <tbody>
+                        <tr>
+                          <td
+                            style="
+                              text-align: left;
+                              line-height: 24px;
+                              vertical-align: middle;
+                              font-size: 16px;
+                              padding: 16px;
+                            "
+                          >
+                            <h2
+                              style="
+                                margin-top: 0px;
+                                margin-bottom: 8px;
+                                color: #1b5ab9;
+                              "
+                            >
+                              Factura emitida
+                            </h2>
+                            <p style="margin: 0px; color: #666666">
+                              Hemos anexado la factura de su compra a este correo
+                              para su comodidad. Puede tomar unos minutos para que la
+                              transacción aparezca en su cuenta.
+                            </p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table
+                      width="100%"
+                      border="0"
+                      cellpadding="0"
+                      cellspacing="0"
+                      style="
+                        background-color: #ffffff;
+                        border-bottom: solid 1px #dddddd;
+                        border-right: solid 1px #dddddd;
+                        border-left: solid 1px #dddddd;
+                      "
+                    >
+                      <!--Link de la factura-->
+                      <tbody>
+                        <tr>
+                          <td
+                            style="
+                              text-align: center;
+                              line-height: 24px;
+                              vertical-align: middle;
+                              font-size: 16px;
+                              padding: 32px;
+                            "
+                          >
+                            <a
+                              href = '${charge.receiptUrl}'
+                              style="
+                                text-decoration: none;
+                                padding: 16px;
+                                border-radius: 4px;
+                                background-color: #06b;
+                                font-size: 16px;
+                                font-weight: bold;
+                                color: white;
+                              "
+                              target="_blank"
+                            >
+                              Obtener factura
+                            </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table
+                      width="100%"
+                      border="0"
+                      cellpadding="0"
+                      cellspacing="0"
+                      style="
+                        background-color: #ffffff;
+                        border-bottom: solid 1px #dddddd;
+                        border-right: solid 1px #dddddd;
+                        border-left: solid 1px #dddddd;
+                      "
+                    >
+                      <tbody>
+                        <tr>
+                          <td
+                            style="
+                              text-align: left;
+                              line-height: 24px;
+                              vertical-align: middle;
+                              font-size: 16px;
+                              padding: 16px;
+                            "
+                          >
+                            <h4
+                              style="
+                                margin-top: 0px;
+                                margin-bottom: 8px;
+                                color: #1b5ab9;
+                              "
+                            >
+                              ¿Tiene problemas con esta transacción?
+                            </h4>
+                            <p
+                              style="
+                                margin: 0px;
+                                padding: 4px;
+                                border-radius: 4px;
+                                background-color: #f6f6f6;
+                                font-size: 14px;
+                                color: #666666;
+                                line-height: 16px;
+                              "
+                            >
+                              <span style="font-weight: bold">Importante:</span>
+                              Dispone de
+                              <span style="font-weight: bold"
+                                >7 días desde la fecha de la transacción</span
+                              >
+                              para presentar una controversia en el Centro de
+                              resoluciones UAEM.
+                            </p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table
+                      width="100%"
+                      border="0"
+                      cellpadding="0"
+                      cellspacing="0"
+                      style="
+                        background-color: #2870c2;
+                        border-bottom: solid 1px #dddddd;
+                        border-right: solid 1px #dddddd;
+                        border-left: solid 1px #dddddd;
+                        margin-bottom: 16px;
+                        border-radius: 0px 0px 8px 8px;
+                      "
+                    >
+                      <tbody>
+                        <tr valign="top">
+                          <td
+                            style="
+                              text-align: center;
+                              padding: 4px;
+                              line-height: 14px;
+                              color: #dddddd;
+                              font-size: 12px;
+                            "
+                          >
+                            Av. Universidad No. 1001, Col Chamilpa, Cuernavaca,
+                            Morelos, México. C.P. 62209
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                  <td style="font-size: 0">&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="yj6qo"></div>
+          <div class="adL"></div>
+        </div>
+      </div>
+      <div id=":yp" class="ii gt" style="display: none">
+        <div id=":yq" class="a3s aiL"></div>
+      </div>
+      <div class="hi"></div>
+    </div>
       `,
     };
     this.mailService.send(mail).pipe(take(1)).subscribe();
@@ -161,19 +401,19 @@ export class CheckoutComponent implements OnInit {
     if (this.meData.user.stripeCustomer === null) {
       // Alerta para mostrar info
       await infoEventAlert(
-        'Cliente no existe',
-        'Necesitamos un cliente para realizar el pago'
+        'Verificacion de pago',
+        'Necesitamos verificar tu trasaccion para realizar el pago'
       );
       const stripeName = `${this.meData.user.name} ${this.meData.user.lastname}`;
-      loadData('Procesando la información', 'Creando el cliente...');
+      loadData('Procesando la información', '...');
       this.customerService
         .add(stripeName, this.meData.user.email)
         .pipe(take(1))
         .subscribe(async (result: { status: boolean; message: string }) => {
           if (result.status) {
             await infoEventAlert(
-              'Cliente añadido al usuario',
-              'Reiniciar la sesión',
+              'Metodo de pago verificado',
+              'Reiniciando la sesión',
               TYPE_ALERT.SUCCESS
             );
             localStorage.setItem('address', this.address);

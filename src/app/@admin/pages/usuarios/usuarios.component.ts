@@ -77,7 +77,7 @@ export class UsuariosComponent implements OnInit {
     `;
   }
   async takeAction($event) {
-    // Coger la información para las acciones
+    //  la información para las acciones
     const action = $event[0];
     const user = $event[1];
     // Cogemos el valor por defecto
